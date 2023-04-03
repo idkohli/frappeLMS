@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <a class="btn btn-info btn-md mb-4" href="{{ url_for('register_member') }}">Register a new member</a>
+    </div>
+    {% for member in members %}
+    <article class="media content-section">
+        <div class="media-body">
+          <h2><a class="article-title" href="#">{{ member.username }}</a></h2>
+          <p class="article-content">Email id - {{ member.email }} and Mobile number - {{ member.mobile_number }}</p>
+          <p class="article-content">Dues - {{ member.dues }}</p>
+          <p class="article-content">Books issued - {{ member.books }}</p>
+        </div>
+    </article>
+    {% endfor %}
+{% endblock content %}

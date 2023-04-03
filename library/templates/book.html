@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h2 class="article-title">{{ book.title }}</h2>
+            <p class="article-content">By {{ book.authors }}</p>
+            <div>
+                {% if book.member_id %}
+                <p>Book is issued to {{ member.username }}</p>
+                {% else %}
+                <a class="btn btn-success btn-sm" href="{{ url_for('issue_book', bookID=book.id) }}">Issue Book</a>
+                {% endif %}
+            </div>
+        </div>
+    </article>
+{% endblock content %}

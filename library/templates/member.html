@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h2 class="article-title">{{ member.username }}</h2>
+            <p class="article-content">Id - {{ member.id }}</p>
+            <p class="article-content">Email id - {{ member.email }}</p>
+            <p class="article-content">Mobile number - {{ member.mobile_number }}</p>
+            <p class="article-content">Dues - {{ member.dues }}</p>
+            <a class="btn btn-danger btn-sm mb-2" href="{{ url_for('member_delete', member_id=member.id) }}">Delete Member</a>
+            <h2 class="article-titsle">Books issued.</h2>
+            {% if member.books %}
+            {% for book in member.books %}
+                <p><a class="article-content" href="{{ url_for('book', bookID=book.id) }}"> {{ book.title }}</a></p>
+            {% endfor %}
+            {% else %}
+                <p>None</p>
+            {% endif %}
+        </div>
+    </article>
+{% endblock content %}

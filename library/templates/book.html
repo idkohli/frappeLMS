@@ -7,6 +7,7 @@
             <div>
                 {% if book.member_id %}
                 <p>Book is issued to {{ member.username }}</p>
+                <a class="btn btn-info btn-sm" href="{{ url_for('return_book', bookID=book.id) }}">Return Book</a>
                 {% else %}
                 <a class="btn btn-success btn-sm" href="{{ url_for('issue_book', bookID=book.id) }}">Issue Book</a>
                 {% endif %}

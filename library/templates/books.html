@@ -5,6 +5,9 @@
         <div class="media-body">
           <h2><a class="article-title" href="{{ url_for('book', bookID=book.id)}}">{{ book.title }}</a></h2>
           <p class="article-content">By {{ book.authors }}</p>
+          {% if book.member %}
+          <p class="article-content">Issued by {{ book.member.username }}</p>
+          {% endif %}
         </div>
     </article>
     {% endfor %}

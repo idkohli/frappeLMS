@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+  <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Import books</legend>
+          <div class="form-group">
+            {{ form.title.label(class="form-control-label") }}
+            {% if form.title.errors %}
+                {{ form.title(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                      {% for error in form.title.errors%}
+                          <span>{{ error }}</span>
+                      {% endfor %}
+                  </div>
+            {% else %}
+                {{ form.title(class="form-control form-control-lg ") }}
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.quantity.label(class="form-control-label") }}
+            {% if form.quantity.errors %}
+                {{ form.quantity(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.quantity.errors%}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.quantity(class="form-control form-control-lg ") }}
+            {% endif %}
+        </div>
+      </fieldset>
+      <div class="form-group">
+          {{ form.submit(class="btn btn-info") }}
+      </div>
+  </form>
+</div>
+    {% if books %}
+    {% for book in books %}
+    <article class="media content-section">
+        <div class="media-body">
+          <h2><a class="article-title" href="#">{{ book.title }}</a></h2>
+          <p class="article-content">By {{ book.authors }}</p>
+        </div>
+    </article>
+    {% endfor %}
+    {% endif %}
+{% endblock content %}
